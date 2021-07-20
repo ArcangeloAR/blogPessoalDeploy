@@ -1,0 +1,17 @@
+.fs-16 {
+    font-size: 16pt;
+}
+
+a {
+    cursor: pointer;
+}
+
+.bg-menu {
+    position: fixed;
+    background-color: rgba(0, 0, 0, .3);
+    backdrop-filter: blur(12px);
+    width: 100%;
+    z-index: 10;
+}
+
+
