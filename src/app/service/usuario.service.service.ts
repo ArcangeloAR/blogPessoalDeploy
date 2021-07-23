@@ -23,6 +23,10 @@ export class UsuarioService {
     }
   }
 
+  editar(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>('https://blogpessoalarcangeloar.herokuapp.com/usuarios', usuario, this.token)
+  }
+
   getByIdUser(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(`https://blogpessoalarcangeloar.herokuapp.com/usuarios/${id}`, this.token)
   }

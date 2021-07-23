@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/Usuario';
 import { AlertasService } from 'src/app/service/alertas.service';
-import { AuthService } from 'src/app/service/auth.service';
 import { UsuarioService } from 'src/app/service/usuario.service.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -19,7 +18,6 @@ export class UserEditComponent implements OnInit {
   tipoUsuario: string
 
   constructor(
-    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
     private usuarioService: UsuarioService,
@@ -53,7 +51,7 @@ export class UserEditComponent implements OnInit {
     if (this.usuario.senha != this.confirmarSenha) {
       this.alertas.showAlertDanger('As senhas estão diferentes. Por favor, verifique.')
     } else {
-      this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
+      this.usuarioService.editar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp
         this.router.navigate(['/inicio'])
         this.alertas.showAlertSuccess('Usuario atualizado com sucesso! Faça login novamente.')
